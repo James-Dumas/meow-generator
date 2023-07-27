@@ -1,0 +1,105 @@
+{
+    "basic": {
+        "start": {
+            "value": "<p>",
+            "next": {
+                "capitalized": 1
+            }
+        },
+        "paragraph": {
+            "value": "<p>",
+            "next": {
+                "capitalized": 1
+            }
+        },
+        "endParagraph": {
+            "value": "</p>",
+            "next": {
+                "paragraph": 1
+            },
+            "end": true
+        },
+        "capitalized": {
+            "value": "Meow",
+            "next": {
+                "space": 100,
+                "period": 1,
+                "ellipsis": 1,
+                "colon": 1,
+                "comma": 5
+            }
+        },
+        "standard": {
+            "value": "meow",
+            "next": {
+                "space": 100,
+                "period": 20,
+                "ellipsis": 1,
+                "exclamation": 2,
+                "question": 2,
+                "hyphen": 1,
+                "comma": 30,
+                "semicolon": 1,
+                "colon": 1
+            }
+        },
+        "space": {
+            "value": " ",
+            "next": {
+                "standard": 1
+            }
+        },
+        "period": {
+            "value": ". ",
+            "next": {
+                "capitalized": 6,
+                "endParagraph": 1
+            }
+        },
+        "exclamation": {
+            "value": "! ",
+            "next": {
+                "capitalized": 3,
+                "endParagraph": 1
+            }
+        },
+        "question": {
+            "value": "? ",
+            "next": {
+                "capitalized": 3,
+                "endParagraph": 1
+            }
+        },
+        "ellipsis": {
+            "value": "... ",
+            "next": {
+                "capitalized": 1,
+                "endParagraph": 2
+            }
+        },
+        "comma": {
+            "value": ", ",
+            "next": {
+                "standard": 1
+            }
+        },
+        "semicolon": {
+            "value": "; ",
+            "next": {
+                "standard": 1
+            }
+        },
+        "colon": {
+            "value": ": ",
+            "next": {
+                "standard": 1
+            }
+        },
+        "hyphen": {
+            "value": "-",
+            "next": {
+                "standard": 1
+            }
+        }
+    }
+}
