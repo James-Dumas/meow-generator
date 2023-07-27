@@ -25,7 +25,7 @@ export function useGenerator(name: string): { generate: (length: number) => Prom
                     index++
                 }
 
-                canEnd = count++ > length && !!current.end
+                canEnd = length > 0 && count++ > length && !!current.end
                 current = generatorConfig[nextKeys[index]]
                 await new Promise(r => setTimeout(r, 10));
             }

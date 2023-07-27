@@ -5,7 +5,7 @@ import { useGenerator } from "@/composables/generator";
 const { generate, output } = useGenerator("basic");
 
 onMounted(async () => {
-    await generate(1000);
+    await generate(0);
 })
 
 </script>
