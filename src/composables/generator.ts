@@ -34,5 +34,5 @@ export function useGenerator(name: string): { generate: (length: number) => Prom
         return { generate, output }
     }
 
-    return { generate: async (length: number) => {}, output: ref('') }
+    return { generate: async () => {}, output: ref('') }
 }
