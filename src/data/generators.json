@@ -15,9 +15,16 @@
         "endParagraph": {
             "value": "</p>",
             "next": {
-                "paragraph": 1
+                "paragraph": 5,
+                "image": 1
             },
             "end": true
+        },
+        "image": {
+            "value": "<div class=\"center\"><img src=\"[IMAGE_URL]\" height=\"[IMAGE_HEIGHT]\" alt=\"Meow\" title=\"Meow\" /></div>",
+            "next": {
+                "paragraph": 1
+            }
         },
         "capitalized": {
             "value": "Meow",

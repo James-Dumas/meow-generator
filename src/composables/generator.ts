@@ -4,7 +4,7 @@ import { ref, Ref } from 'vue'
 
 const generatorConfigs = generatorConfigsJson as { [key: string]: TextGeneratorConfig }
 
-export function useGenerator(name: string): { generate: (length: number) => Promise<void>, output: Ref<string> } {
+export function useGenerator(name: string, getImageURL?: () => Promise<string>): { generate: (length: number) => Promise<void>, output: Ref<string> } {
     if (name in generatorConfigs) {
         const generatorConfig = generatorConfigs[name]
         const output = ref('')
@@ -13,7 +13,12 @@ export function useGenerator(name: string): { generate: (length: number) => Prom
             let count = 0
             let canEnd = false
             while (!canEnd) {
-                output.value += current.value
+                let value = current.value
+                while (value.includes('[IMAGE_URL]') && getImageURL) {
+                    value = value.replace('[IMAGE_URL]', await getImageURL())
+                    value = value.replace('[IMAGE_HEIGHT]', '400')
+                }
+                output.value += value
                 const nextOptions = current.next
                 const nextKeys = Object.keys(nextOptions)
                 const nextValues = Object.values(nextOptions)
@@ -27,7 +32,7 @@ export function useGenerator(name: string): { generate: (length: number) => Prom
 
                 canEnd = length > 0 && count++ > length && !!current.end
                 current = generatorConfig[nextKeys[index]]
-                await new Promise(r => setTimeout(r, 10));
+                await new Promise(r => setTimeout(r, 10))
             }
         }
 

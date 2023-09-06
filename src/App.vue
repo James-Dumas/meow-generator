@@ -1,11 +1,19 @@
 <script setup lang="ts">
-import { onMounted } from "vue";
-import { useGenerator } from "@/composables/generator";
+import { onMounted } from "vue"
+import { useGenerator } from "@/composables/generator"
+import axios from "axios"
 
-const { generate, output } = useGenerator("basic");
+async function getRandomCatImage() {
+    const result = await axios.get('https://api.thecatapi.com/v1/images/search')
+    if (result?.data) {
+        return result.data[0].url
+    }
+}
+
+const { generate, output } = useGenerator("basic", getRandomCatImage)
 
 onMounted(async () => {
-    await generate(0);
+    await generate(0)
 })
 
 </script>
@@ -21,5 +29,6 @@ onMounted(async () => {
         width: 100%;
         text-align: left;
         text-indent: 4rem;
+        padding-bottom: calc(min(50%, 200px));
     }
 </style>
